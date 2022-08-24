@@ -22,7 +22,7 @@ const Step = ({ stepId, trackId, isStepOn, sound, isStepPlaying, play }: StepPro
   }, [isStepOn, isStepPlaying, play]);
 
   const noteClicked = useCallback(() => {
-    toggleStep(trackId, stepId)();
+    toggleStep(trackId, stepId);
     if (isStepOn) {
       return;
     }

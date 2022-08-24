@@ -26,22 +26,6 @@ export const DefaultPattern: Pattern = {
     {
       sound: SoundName.OpenHH,
       stepsOn: []
-    },
-    {
-      sound: SoundName.Ride,
-      stepsOn: []
-    },
-    {
-      sound: SoundName.Crash,
-      stepsOn: []
-    },
-    {
-      sound: SoundName.Tom1,
-      stepsOn: []
-    },
-    {
-      sound: SoundName.Tom2,
-      stepsOn: []
     }
   ]
 };

@@ -1,22 +1,23 @@
 import React, { useContext, memo } from 'react';
 import { PatternContext } from '../contexts/PatternContext';
+import { StyledPlaylist } from '../styled/StyledPlaylist';
 import Track from './Track';
 
 type PlaylistProps = {
   currentStepId: number | null;
 };
 
-const Playlist = ({ currentStepId }: PlaylistProps) => {
-  const { pattern } = useContext(PatternContext);
+const maxIndex = 7;
 
-  // const reverb = new Tone.Reverb({ decay: 1.5, wet: 0.6 }).toDestination();
-  // player.connect(reverb);
+const Playlist = ({ currentStepId }: PlaylistProps) => {
+  const { pattern, addTrack } = useContext(PatternContext);
+
   const tracks = pattern.trackList.map((track, trackId) => {
     const { sound, stepsOn } = track;
 
     return (
       <Track
-        key={sound}
+        key={`${sound}_${trackId}`}
         trackId={trackId}
         sound={sound}
         stepsOn={stepsOn}
@@ -25,7 +26,14 @@ const Playlist = ({ currentStepId }: PlaylistProps) => {
     );
   });
 
-  return <div className="track-list">{tracks}</div>;
+  return (
+    <StyledPlaylist>
+      {tracks}
+      {pattern.trackList.indexOf(pattern.trackList[pattern.trackList.length - 1]) < maxIndex && (
+        <button onClick={addTrack}>+</button>
+      )}
+    </StyledPlaylist>
+  );
 };
 
 export default memo(Playlist);

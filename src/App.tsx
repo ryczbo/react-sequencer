@@ -4,6 +4,7 @@ import { PatternContextProvider } from './contexts/PatternContext';
 import Playlist from './components/Playlist';
 import Toolbar from './components/Toolbar';
 import { useTimer } from './hooks/useTimer';
+import { StyledSequencer } from './styled/StyledSequencer';
 
 function App() {
   const baseBPMPerOneSecond = 60;
@@ -34,8 +35,8 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <PatternContextProvider>
+      <PatternContextProvider>
+        <StyledSequencer>
           <Toolbar
             setBPM={setBPM}
             setStartTime={setStartTime}
@@ -45,8 +46,8 @@ function App() {
             BPM={BPM}
           />
           <Playlist currentStepId={currentStepId} />
-        </PatternContextProvider>
-      </header>
+        </StyledSequencer>
+      </PatternContextProvider>
     </div>
   );
 }
